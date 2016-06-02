@@ -255,5 +255,7 @@
 		<module>sdk</module>
 		<module>bussiness</module>
     <module>userSdk</module>
+    <module>coustomer</module>
+    <module>customer</module>
   </modules>
 </project>
