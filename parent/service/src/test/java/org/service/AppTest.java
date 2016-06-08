@@ -1,4 +1,4 @@
-package org.provider;
+package org.service;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
