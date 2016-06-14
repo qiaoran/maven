@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+/*-----------------------------------------------------------------------------------*/
+html,body{width:100%;}
+body,input,button,select,textarea{ font-family:"微软雅黑"; font-size:12px; color:#666666;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var{font-style:normal;}
+pre,code,kbd,samp{font-family:"微软雅黑";}
+img{border: 0;vertical-align: middle;}
+a{ text-decoration:none; color:#000;cursor:pointer;}
+a:hover{color:#ff8400;}
+body,html,h1,h2,h3,h4,h5,h6,hr,blockquote,p,pre,ul,ol,li,dl,dt,dd,form,fieldset,legend,button,input,textarea,th,td{margin:0; padding:0;}
+ul,ol,li{list-style:none;}
+sup{vertical-align:top;}
+sub{vertical-align:bottom;}
+legend{ color:#000;}
+fieldset{border:0;}
+button,input,select,textarea{font-size:100%;}
+input,textarea{outline:none;}
+table{border-collapse:collapse; border-spacing:0;}
+.clear{clear:both;}
+input{ outline:none;}
+b{font-weight:normal;}
+.dis_none{ display:none;}
+.clearBoth{clear:both; height:0; line-height:0; font-size:0;}
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfloat{zoom:1} 

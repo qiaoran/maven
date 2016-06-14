@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:property-placeholder location="classpath:config.properties" />
+	<context:component-scan base-package="com.shangqiu.school.dao,com.shangqiu.school.service" />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<import resource="spring-db.xml" />
+
+	<bean class="com.shangqiu.school.fastDFS.FastdfsClient"
+		destroy-method="close">
+		<constructor-arg>
+			<list>
+				<value>${fastdfs.url}</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>
