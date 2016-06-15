@@ -1,7 +1,6 @@
 package com.shangqiu.school.service.impl;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.shangqiu.school.col.base.BaseController;
 import com.shangqiu.school.dao.AccountDao;
 import com.shangqiu.school.entity.Account;
 import com.shangqiu.school.service.AccountService;
 import com.shangqiu.school.util.BizException;
-import com.shangqiu.school.util.SHAEncryptor;
 
 /**
  * @author joy-pc
@@ -25,58 +24,21 @@ import com.shangqiu.school.util.SHAEncryptor;
 @Service("accountService")
 @Transactional(readOnly = true)
 public class AccountServiceImpl implements AccountService {
+
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private AccountDao accountDao;
 
-
-	@Deprecated
-	@Transactional(readOnly = false)
-	public Account saveObje(Account account) {
-		try {
-			return accountDao.save(account);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public Account updateorsave(Account account) {
-		try {
-			return accountDao.save(account);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public Account find(Long pid) {
-		return accountDao.get(pid);
-	}
-
-	/* 根据邮箱查询账户信息 */
-	public Account findByEmail(String email) {
-		List<Account> list = accountDao.findBy("email", email);
-		return list != null ? list.size() > 0 ? list.get(0) : null : null;
-	}
-
-	/* 根据手机查询账户信息 */
-	public Account findByAccount(String phone) {
-		List<Account> list = accountDao.findBy("account", phone);
-		return list != null ? list.size() > 0 ? list.get(0) : null : null;
-	}
-
-	/*
-	 * (non-Javadoc)
+	/**
+	 * 登陆验证
 	 * 
-	 * @see
-	 * com.xnac.yz.dec.service.AccountServic#verifyLogin(com.xnac.yz.dec.entity.
-	 * Account)
+	 * @param account
+	 * @return
 	 */
-	public Account verifyLogin(Account account, boolean autologin, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-
+	public Account verifyLogin(Account account, HttpServletRequest request, HttpServletResponse response) {
 		Account realAccount = null;
-		String cipherPassword = SHAEncryptor.hash(account.getPassward());
+		//String cipherPassword = SHAEncryptor.hash(account.getPassward());
 
 		if (null != account.getAccount() && !"".equals(account.getAccount())) {
 			realAccount = accountDao.queryByAccount(account.getAccount().trim());
@@ -89,47 +51,37 @@ public class AccountServiceImpl implements AccountService {
 			if (realAccount.getIsclosed()) {
 				throw new BizException("账户被禁用");
 			}
-			if (!cipherPassword.equals(realAccount.getPassward())) {
+			if (!account.getPassward().equals(realAccount.getPassward())) {
 				throw new BizException("密码错误");
 			}
-			// realAccount =
-			// accountDao.verifyLoginByAccount(account.getAccount(),
-			// cipherPassword);
 		} else if (null != account.getMobile() && !"".equals(account.getMobile())) {
-			realAccount = accountDao.verifyLoginByMobile(account.getMobile(), cipherPassword);
+			realAccount = accountDao.verifyLoginByMobile(account.getMobile(), account.getPassward());
 		} else if (null != account.getEmail() && !"".equals(account.getEmail())) {
-			realAccount = accountDao.verifyLoginByEmail(account.getEmail(), cipherPassword);
+			realAccount = accountDao.verifyLoginByEmail(account.getEmail(), account.getPassward());
 		}
 
 		if (null == realAccount) {
 			throw new BizException("账户不存在");
+		} else if (true == realAccount.getIsclosed()) {
+			throw new BizException("账户已经被关闭");
 		} else {
+			int longnum = realAccount.getLogincun() + 1;
 			realAccount.setLastLoginTime(new Date());
+			realAccount.setLogincun(longnum);
 			realAccount = this.accountDao.save(realAccount);
+			logger.info("登陆成功");
+			request.getSession(true).setAttribute(BaseController.sessionName, realAccount);
 		}
+
 		return realAccount;
 	}
 
-	public Account verifyLogin_audio(Account account, boolean autologin, String numb, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Account getAccountById(Long pid) {
+		return this.accountDao.get(pid);
 	}
 
-	public Long getAccountid(String phoneNumber, String username, int type) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateAccount(Account account) {
+		this.accountDao.save(account);
 	}
 
-	public Account addOrUpdateAccount(Account account) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Account queryByMobile(String mobile) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

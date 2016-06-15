@@ -15,7 +15,4 @@
 <jsp:include page="../common/footer.jsp"/>
 
 <script type="text/javascript" src="/static/base/js/jquery-1.12.0.min.js"></script>
-
-<script type="text/javascript" src="/static/base/js/share.js"></script>
-<script type="text/javascript" src="/static/base/js/plat.js"></script>
 </html>

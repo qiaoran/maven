@@ -68,6 +68,15 @@ public class BaseController {
 	public void setSessionAccount(HttpServletRequest request, Account account) {
 		request.getSession(true).setAttribute(sessionName, account);
 	}
+	
+	/**
+	 * 删除session
+	 * 
+	 * @param request
+	 */
+	public void destorySession(HttpServletRequest request) {
+		request.getSession().invalidate();
+	}
 
 
 

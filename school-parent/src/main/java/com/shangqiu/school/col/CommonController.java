@@ -1,4 +1,4 @@
-package com.shangqiu.school.col.base;
+package com.shangqiu.school.col;
 
 import java.io.File;
 import java.util.HashMap;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.shangqiu.school.col.base.BaseController;
 import com.shangqiu.school.fastDFS.FastdfsClient;
 
 /**

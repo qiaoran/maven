@@ -6,51 +6,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shangqiu.school.entity.Account;
 
+/**
+ * @author joy-pc
+ *
+ */
 public interface AccountService {
 
 	/**
-	 * query by PK id
-	 * @param pid
-	 * @return
-	 */
-    public Account find(Long pid);
-
-	/**
-	 * verify login
+	 * 登陆
 	 * @param account
-	 */
-	public Account verifyLogin(Account account,boolean autologin, HttpServletRequest request,HttpServletResponse response) throws Exception;
-	/**
-	 * 自动登录
-	 * @param account
-	 * @param autologin
 	 * @param request
 	 * @param response
 	 * @return
-	 * @throws Exception
 	 */
-	public Account verifyLogin_audio(Account account, boolean autologin,String numb,HttpServletRequest request,HttpServletResponse response) throws Exception;
+	public Account verifyLogin(Account account, HttpServletRequest request, HttpServletResponse response) ;
 	
 	/**
-	 * @param phoneNumber
-	 * @param username
+	 * @param pid
 	 * @return
 	 */
-	public Long getAccountid(String phoneNumber,String username,int type);
-	
-	
-	
+	public Account getAccountById(Long pid);
+
 	/**
-	 * 新增或者修改账号
 	 * @param account
-	 * @return
 	 */
-	public Account addOrUpdateAccount(Account account);
-	
-	/**
-	 * @param mobile
-	 * @return
-	 */
-	public Account queryByMobile(String mobile);
+	public void updateAccount(Account account);
 
 }

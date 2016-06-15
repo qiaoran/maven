@@ -22,28 +22,25 @@
     <div class="container" >
 
       <form class="form-signin" style="background-color: beige; margin-top: 10%; ">
-        <h3 class="form-signin-heading">欢迎来到3D+<small>虚拟现实家装设计平台</small></h3>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="邮箱" required autofocus>
+        <h3 class="form-signin-heading">&nbsp;商丘师院<small>&nbsp;&nbsp;&nbsp;&nbsp;发票数据归档系统</small></h3>
+        <label for="inputEmail" class="sr-only">用户名</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="用户名" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
-        <div class="checkbox">
+       <!--  <div class="checkbox">
           <label>
             <input type="checkbox" id="chkRememberPwd" value="remember-me"> 记住我
           </label>
           <label >
             <a href="#"> 忘记密码？</a>
           </label>
-        </div>
+        </div> -->
         <button type="button" class="btn btn-lg btn-primary btn-block" type="submit" onclick="login()">登录</button>
       </form>
 
     </div>
   </body>
   <script>
-    window.onload = function(){
-      document.getElementById('inputEmail').focus();GetCookie();
-    }
 
   </script>
 </html>
