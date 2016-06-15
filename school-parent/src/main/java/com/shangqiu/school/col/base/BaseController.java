@@ -25,10 +25,6 @@ public class BaseController {
 	@Autowired
 	protected ServletContext servletContext;
 	
-	/**
-	 * 根据ip解析地址
-	 */
-	public static final String addressbo = "addressbo";
 
 	/**
 	 * @param fieldErrors

@@ -1,4 +1,4 @@
-package com.shangqiu.school.col.base;
+package com.shangqiu.school.intercepters;
 
 
 import javax.servlet.ServletContext;

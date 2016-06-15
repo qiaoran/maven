@@ -51,7 +51,7 @@ public class Test {
           
         try {  
             HttpPost httppost = new HttpPost(url);  
-            FileBody bin = new FileBody(new File("D:\\temp\\ddd.txt"));  
+            FileBody bin = new FileBody(new File("F:\\dddd.JPG"));  
             MultipartEntity reqEntity = new MultipartEntity();  
             reqEntity.addPart("file", bin);//file1为请求后台的File upload;属性      
             httppost.setEntity(reqEntity);  
@@ -83,7 +83,7 @@ public class Test {
           
     	Test httpPostArgumentTest2 = new Test();  
     	// httpPostArgumentTest2.SubmitPost("http://127.0.0.1:8080/uploadNew",  
-        httpPostArgumentTest2.SubmitPost("http://192.168.1.51:9012/uploadregion",  
+        httpPostArgumentTest2.SubmitPost("http://127.0.0.1:8081/common/upload",  
                 "test.xml","test.zip","D:\\temp\\ddd.txt");  
     }  
       
