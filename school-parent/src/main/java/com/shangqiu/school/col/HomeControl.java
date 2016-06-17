@@ -1,6 +1,5 @@
 package com.shangqiu.school.col;
 
-
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,30 +21,30 @@ import com.shangqiu.school.intercepters.SecurityHelper;
 public class HomeControl extends BaseController {
 	/**
 	 * 打开首页
+	 * 
 	 * @return
 	 */
 	@RequestMapping("/")
-	public ModelAndView index(HttpServletRequest request,HttpServletResponse response) {
-		 ModelAndView mav ;
+	public ModelAndView index(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = null;
 		Account account = SecurityHelper.getLoginUser();
-		if(null == account || null == account.getPid()) {
+		if (null == account || null == account.getPid()) {
 			mav = new ModelAndView("/base/login");
-		}else{
+		} else {
 			try {
-				response.sendRedirect("/roomcase/lists");
+				response.sendRedirect("/manage/home");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			mav = new ModelAndView("/base/showRoomCaseLists");
 		}
-		
-	     return  mav;
+		return mav;
 
 	}
+
 	@RequestMapping("/error")
 	public ModelAndView error(HttpServletResponse response) {
-		 ModelAndView mav = new ModelAndView("/common/e404");
-	     return  mav;
+		ModelAndView mav = new ModelAndView("/common/e404");
+		return mav;
 	}
-	
+
 }

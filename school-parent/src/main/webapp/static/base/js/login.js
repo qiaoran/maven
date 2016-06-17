@@ -18,7 +18,20 @@ function ajaxLogin(name,pwd){
 		},
 		success : function(data) {
 			if(true==data.success){
-				window.location.href="/roomcase/lists?token="+data.message;	
+				window.location.href="/manage/home";	
+			}else{
+				alert(data.message);
+			}
+		}
+	});
+}
+function ajaxLogout(name,pwd){
+	$.ajax({
+		type : 'POST',
+		url : "/user/logout",
+		success : function(data) {
+			if(true==data.success){
+				window.location.href="/";	
 			}else{
 				alert(data.message);
 			}

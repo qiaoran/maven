@@ -1,6 +1,5 @@
 package com.shangqiu.school.col;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shangqiu.school.col.base.BaseController;
 import com.shangqiu.school.entity.Account;
-import com.shangqiu.school.intercepters.SecurityHelper;
 import com.shangqiu.school.service.AccountService;
 
 /**
@@ -67,23 +65,9 @@ public class LoginControl extends BaseController {
 	 */
 	@RequestMapping("/user/logout")
 	@ResponseBody
-	public Map<String, Object> logout(HttpServletRequest request, HttpServletResponse response, String token) {
+	public Map<String, Object> logout(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> rsMap = new HashMap<String, Object>();
-
-		if (null != token && !"".equals(token)) {
-			try {
-				Account account = SecurityHelper.getLoginUser();
-				Account account1 = accountService.getAccountById(account.getPid());
-				account1.setLastLoginTime(new Date());
-				account1.setPid(account.getPid());
-				accountService.updateAccount(account1);
-			} catch (Exception e) {
-				rsMap.put("success", false);
-				rsMap.put("message", "网络异常！");
-				return rsMap;
-			}
-			destorySession(request);
-		}
+		destorySession(request);
 		rsMap.put("success", true);
 		return rsMap;
 	}

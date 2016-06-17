@@ -9,38 +9,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
 <meta name="renderer" content="webkit">
-<title>登陆</title>
-   <title>Login</title>
-    <link rel="stylesheet" href="../../static/base/css/bootstrap.min.css" />
-	<script type="text/javascript" src="../../static/base/js/login.js"></script>
-  </head>
-
+<title>lift</title>
   <body >
-		<div style="width:100%;height:100%;position:absolute;z-index:-1;top:0px;">
-			<img src="../../static/base/images/backimg1.png" width="100%" height="100%" >
-		</div> 
-    <div class="container" >
-
-      <form class="form-signin" style="background-color: beige; margin-top: 10%; ">
-        <h3 class="form-signin-heading">&nbsp;商丘师院<small>&nbsp;&nbsp;&nbsp;&nbsp;发票数据归档系统</small></h3>
-        <label for="inputEmail" class="sr-only">用户名</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="用户名" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
-       <!--  <div class="checkbox">
-          <label>
-            <input type="checkbox" id="chkRememberPwd" value="remember-me"> 记住我
-          </label>
-          <label >
-            <a href="#"> 忘记密码？</a>
-          </label>
-        </div> -->
-        <button type="button" class="btn btn-lg btn-primary btn-block" type="submit" onclick="login()">登录</button>
-      </form>
-
-    </div>
+  lift
   </body>
-  <script>
-
-  </script>
 </html>
