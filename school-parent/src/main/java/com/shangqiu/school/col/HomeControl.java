@@ -32,7 +32,7 @@ public class HomeControl extends BaseController {
 			mav = new ModelAndView("/base/login");
 		}else{
 			try {
-				response.sendRedirect("/roomcase/lists?token="+account.getToken());
+				response.sendRedirect("/roomcase/lists");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

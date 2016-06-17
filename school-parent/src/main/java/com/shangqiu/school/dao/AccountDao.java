@@ -1,15 +1,12 @@
 package com.shangqiu.school.dao;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.shangqiu.school.entity.Account;
-import com.shangqiu.school.entity.emue.AccountType;
 import com.shangqiu.school.util.dao.PageHibernateDao;
 /**
  * 登陆账号数据持久
@@ -89,46 +86,4 @@ public class AccountDao extends PageHibernateDao<Account, Long> {
 		return this.findUnique(" from Account where email=:email and passward=:passward", param);
 	}
 	
-	/**
-	 * 根据手机号进行唯一性校验
-	 * @param mobile
-	 * @return
-	 */
-	public Boolean checkMobile(String mobile){
-		boolean  s=false;
-		Query querycount =null;
-		
-		querycount=	this.getSession().createSQLQuery("SELECT count(*) from bs_account a where a.mobile='"+mobile+"' or a.account='"+mobile+"'");
-		
-		BigInteger  count =(BigInteger)querycount.uniqueResult();
-		int b = count.intValue();
-		if(b>=1)
-			s=false;
-			else
-			s=true;	
-		return s;
-	}
-	
-	/**
-	 * 根据手机号进行唯一性校验
-	 * @param mobile
-	 * @return
-	 */
-	public boolean checkMobileNew(String mobile){
-		String hql = "from Account a where a.mobile='"+mobile+"' or a.account='"+mobile+"'";
-		Query query  = this.getSession().createQuery(hql);
-		List<Account> list = query.list();
-		boolean falt = true;
-		for(int i=0;i<list.size();i++){
-			if(list.get(i).getRole().equals(AccountType.business)
-					||list.get(i).getRole().equals(AccountType.designer)
-					||list.get(i).getRole().equals(AccountType.personal)){
-				falt = false;
-				break;
-				
-			}
-		}
-		
-		return falt;
-	}
 }

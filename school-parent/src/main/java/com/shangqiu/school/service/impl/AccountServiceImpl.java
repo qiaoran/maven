@@ -56,9 +56,7 @@ public class AccountServiceImpl implements AccountService {
 			}
 		} else if (null != account.getMobile() && !"".equals(account.getMobile())) {
 			realAccount = accountDao.verifyLoginByMobile(account.getMobile(), account.getPassward());
-		} else if (null != account.getEmail() && !"".equals(account.getEmail())) {
-			realAccount = accountDao.verifyLoginByEmail(account.getEmail(), account.getPassward());
-		}
+		} 
 
 		if (null == realAccount) {
 			throw new BizException("账户不存在");

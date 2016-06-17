@@ -48,7 +48,6 @@ public class LoginControl extends BaseController {
 		try {
 			realAccount = accountService.verifyLogin(account, request, response);
 			success = true;
-			message = realAccount.getToken();
 		} catch (Exception e) {
 			logger.error("login cerfication faild", e);
 			message = e.getMessage();

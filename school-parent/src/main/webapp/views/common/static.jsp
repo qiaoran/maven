@@ -2,7 +2,6 @@
 <script type="text/javascript" src="/static/base/js/jquery-1.12.0.min.js"></script>
 
 <link rel="stylesheet" href="../../static/base/css/base.css" />
-<link rel="stylesheet" href="../../static/base/css/plat.css" />
 
 <script type="text/javascript">
     var fserver ="${fsever}";

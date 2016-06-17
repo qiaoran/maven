@@ -4,15 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.shangqiu.school.entity.emue.AccountType;
-import com.shangqiu.school.util.DateHelper;
 
 /**
  * 账号信息主表
@@ -42,15 +36,7 @@ public class Account extends BaseEntity {
 	/**
 	 * 账号类型
 	 */
-	@Column(name = "role", length = 100)
-	@Enumerated(EnumType.STRING)
-	private AccountType role;
-
-	/**
-	 * 注册时间
-	 */
-	@Column(name = "createdate", updatable = false)
-	private Date createDate;
+	private Long roleid;
 
 	/**
 	 * 最后登录时间
@@ -62,11 +48,6 @@ public class Account extends BaseEntity {
 	 */
 	@Column(name = "mobile", length = 20)
 	private String mobile;
-	/**
-	 * 邮箱地址
-	 */
-	@Column(name = "email", length = 50)
-	private String email;
 	/**
 	 * 账号是否被关闭(禁用)
 	 */
@@ -83,159 +64,63 @@ public class Account extends BaseEntity {
 	 */
 	private String logoUrl;
 	/**
-	 * 生日
-	 */
-	private Date brithday;
-	/**
-	 * 地址
-	 */
-	private String address;
-	/**
 	 * 登陆次数
 	 */
 	private int logincun;
-
-	/**
-	 * 审核状态 1：审核通过 0：未审核
-	 */
-	private int accountTyep;
-	
-	@Transient
-	private String token;
-	
-
-	public String getPassward() {
-		return passward;
-	}
-
-	public void setPassward(String passward) {
-		this.passward = passward;
-	}
-
-	public AccountType getRole() {
-		return role;
-	}
-
-	public void setRole(AccountType role) {
-		this.role = role;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getLastLoginTime() {
-		return lastLoginTime;
-	}
-
-	public String getLastLoginTimeWiew() {
-		if (null != this.lastLoginTime) {
-			return DateHelper.toTime(this.lastLoginTime);
-		}
-		return "";
-	}
-
-	public void setLastLoginTime(Date lastLoginTime) {
-		this.lastLoginTime = lastLoginTime;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * @return the account
-	 */
 	public String getAccount() {
 		return account;
 	}
-
-	/**
-	 * @param account
-	 *            the account to set
-	 */
 	public void setAccount(String account) {
 		this.account = account;
 	}
-
+	public String getPassward() {
+		return passward;
+	}
+	public void setPassward(String passward) {
+		this.passward = passward;
+	}
+	public Long getRoleid() {
+		return roleid;
+	}
+	public void setRoleid(Long roleid) {
+		this.roleid = roleid;
+	}
+	public Date getLastLoginTime() {
+		return lastLoginTime;
+	}
+	public void setLastLoginTime(Date lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 	public Boolean getIsclosed() {
 		return isclosed;
 	}
-
 	public void setIsclosed(Boolean isclosed) {
 		this.isclosed = isclosed;
 	}
-
 	public String getNickName() {
 		return nickName;
 	}
-
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
-
 	public String getLogoUrl() {
 		return logoUrl;
 	}
-
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-
-	public Date getBrithday() {
-		return brithday;
-	}
-
-	public void setBrithday(Date brithday) {
-		this.brithday = brithday;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public int getLogincun() {
 		return logincun;
 	}
-
 	public void setLogincun(int logincun) {
 		this.logincun = logincun;
 	}
 
-	public int getAccountTyep() {
-		return accountTyep;
-	}
-
-	public void setAccountTyep(int accountTyep) {
-		this.accountTyep = accountTyep;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
 
 }
