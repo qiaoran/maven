@@ -25,7 +25,7 @@ function ajaxLogin(name,pwd){
 		}
 	});
 }
-function ajaxLogout(name,pwd){
+function ajaxLogout(){
 	$.ajax({
 		type : 'POST',
 		url : "/user/logout",

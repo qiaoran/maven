@@ -29,34 +29,4 @@ public class MangeControl extends BaseController {
 	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
 		return new ModelAndView("/business/manage");
 	}
-	/**
-	 * 左侧
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	@RequestMapping("/left")
-	public ModelAndView left(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("/business/manageLift");
-	}
-	/**
-	 * 中间
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	@RequestMapping("/center")
-	public ModelAndView center(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("/business/manageCenter");
-	}
-	/**
-	 * 顶部
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	@RequestMapping("/top")
-	public ModelAndView top(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("/business/manageTop");
-	}
 }

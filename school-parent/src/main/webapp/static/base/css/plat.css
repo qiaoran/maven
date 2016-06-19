@@ -37,9 +37,9 @@
 .mm_tabs{position:absolute;left:0;padding-top:10px;top:0px;}
 .mm_tabs li{float:left;height:50px;line-height:50px;color:#6e6e6e;font-size:18px;padding:0 5px;margin:0 10px;cursor:pointer;}
 li.tab_chosen{border-bottom:2px solid #f9ce54;color:#000;}
-.mm_con{width:1200px;margin:0 auto;}
+.mm_con{width:100%;margin:0 auto;}
 .mm_table{width:100%;}
-.mm_table th{height:50px;color:#323232;font-size:16px;}
+.mm_table th{height:50px;color:#323232;font-size:15px;}
 .mm_table td{height:50px;text-align:center;font-size:12px;color:#323232;}
 .spancheck{display:inline-block;*display:inline;zoom:1;height:18px;width:18px;background:url(../images/p_check_bg.png) no-repeat;cursor:pointer;}
 .spanchecked{background:url(../images/p_checked_bg.png) no-repeat;}

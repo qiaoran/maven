@@ -1,0 +1,55 @@
+/* 字体 */
+.top-font01 {
+	font-size: 36px;
+    color: #009999;
+    font-family: "方正舒体";
+}
+.left-font01 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #448CCB;
+	text-decoration: none;
+	filter: DropShadow(Color=#FFFFFF, OffX=1, OffY=1);
+}
+a.left-font01:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: underline;
+	filter: DropShadow(Color=#FFFFFF, OffX=1, OffY=11,);
+}
+.left-font02 {
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+	color: #448CCB;
+	text-decoration: none;
+	filter: DropShadow(Color=#FFFFFF, OffX=1, OffY=1);
+}
+/* 布局 */
+.main {
+    /* font: bolder 20px '微软雅黑'; */
+    /* text-align: center; */
+}
+.main {
+    width: 100%;
+    float: left;
+}
+.main .content {
+    margin-left: 220px;
+    margin-right:20px;
+    height:600px;
+   /*  border:1px solid #6795B4; */
+}
+.sitebar {
+    width: 200px;
+    height:100%;
+    float: left;
+    margin-left: -100%;
+}
+.left-table01 {
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #B8C9D6;
+	margin-left: 14px;
+}
