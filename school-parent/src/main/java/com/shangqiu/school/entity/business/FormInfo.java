@@ -1,6 +1,7 @@
 package com.shangqiu.school.entity.business;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.shangqiu.school.entity.BaseEntity;
+import com.shangqiu.school.util.DateHelper;
 
 /**
  * 发票基本信息
@@ -18,13 +20,18 @@ import com.shangqiu.school.entity.BaseEntity;
 @Table(name = "bs_form_info")
 public class FormInfo  extends BaseEntity {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 报销凭证号
+	 */
+	private String number;
+	/**
 	 * 发票名称
 	 */
 	private String name;
-	/**
-	 * 发票类型(差旅，住宿，餐饮)
-	 */
-	private Long rbType;
 	/**
 	 * 上传发票用户id
 	 */
@@ -37,12 +44,27 @@ public class FormInfo  extends BaseEntity {
 	/**
 	 * 金额
 	 */
-	private int money;
+	private double money;
 	
 	/**
-	 * 发票类型（增值税，普通）
+	 * 报销人名称
 	 */
-	private Long type;
+	private String rebursUser;
+	
+	/**
+	 * 摘要
+	 */
+	private String formAbstract;
+	
+	/**
+	 * 备注
+	 */
+	private String remark;
+	
+	/**
+	 * 报销时间
+	 */
+	private Date formReim;
 	
 	/**
 	 * 关联的发票图片地址
@@ -77,12 +99,12 @@ public class FormInfo  extends BaseEntity {
 		this.name = name;
 	}
 
-	public Long getRbType() {
-		return rbType;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setRbType(Long rbType) {
-		this.rbType = rbType;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 	public Boolean getIsclosed() {
@@ -93,23 +115,49 @@ public class FormInfo  extends BaseEntity {
 		this.isclosed = isclosed;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 
-	public Long getType() {
-		return type;
+	public String getRebursUser() {
+		return rebursUser;
 	}
 
-	public void setType(Long type) {
-		this.type = type;
+	public void setRebursUser(String rebursUser) {
+		this.rebursUser = rebursUser;
+	}
+
+	public String getFormAbstract() {
+		return formAbstract;
+	}
+
+	public void setFormAbstract(String formAbstract) {
+		this.formAbstract = formAbstract;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	public Date getFormReim() {
+		return formReim;
+	}
+
+	public void setFormReim(Date formReim) {
+		this.formReim = formReim;
 	}
 	
-	
-	
+	public String getFormReimViem(){
+		return DateHelper.toTime(formReim);
+	}
+
 
 }

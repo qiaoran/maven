@@ -27,15 +27,14 @@
 				</tr>
 			</table></div>
 <div class="main">
-    <div class="content" id="content">
-   <!-- <div style="font: bolder 20px/600px '方正舒体';text-align: center;">  欢迎来到商丘师范发票归档系统！</div> -->
+    <div class="content" id="content" style="background:#F6F6F6;">
    <tr/>
      <div style="font: bolder 30px '方正舒体';top: 50px;left: 50px;">  欢迎来到商丘师范发票归档系统！</div>
     </div>
 </div>
 <div class="sitebar">
-	<table width="198" cellpadding="0" cellspacing="0" class="left-table01" border="1" style="border:1px solid #6795B4">
-  		<tr height="55px">
+	<table width="198" cellpadding="0" cellspacing="0" class="left-table01">
+  		<tr height="55px"  style="border:1px solid #6795B4" >
    		 <TD>
 			<table width="100%"  border="0" cellpadding="0" cellspacing="0">
 		  	 <tr>
@@ -64,32 +63,67 @@
 			</table> 
 		  </TD>
   		</tr>
-  		<tr style="border:1px solid #6795B4" height="545px">
+  		<tr style="border:1px solid #6795B4;border-top-color: red" height="545px">
   		<td valign="top" style="text-align: center;">
-   		 	<li style="margin-top: 10px;" onclick="openFormList();">2016年6月</li>
-   		  	<li style="margin-top: 10px;" onclick="openFormList();">2016年5月</li>
-   		  	<li style="margin-top: 10px;" onclick="openFormList();">2016年4月</li>
-   		    <li style="margin-top: 10px;" onclick="openFormList();">2016年3月</li>
-   		    <li style="margin-top: 10px;" onclick="openFormList();">2016年2月</li>
-		  </TD>
+  		<!-- <label style="margin-left: -70px;">按年份列出</label> -->
+  		<c:forEach var="yearList" items="${yearLists}">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" >
+				<tr>
+					<td>
+						<table width="90%" border="0" align="center" cellpadding="0"cellspacing="0"  class="left-table03">
+							<tr height="29px;">
+								<td width="20%" align="right"><img id="${yearList.myyear}title" class="imageClass" name="img8" id="img8" src="../../static/base/images/ico04.gif"  height="11" /></td>
+								<td width="40%" onClick="openMonth(this);" id="${yearList.myyear}"><a href="javascript:" target="mainFrame"class="left-font03" >${yearList.myyearname}</a></td>
+								<td width="40%"></td>
+							</tr>
+						</table>
+						<table  width="100%" border="0" cellpadding="0" cellspacing="0" style="display:none;" class="tableClass">
+							<c:forEach var="month" items="${yearList.months}">
+							<tr height="20px;" class="left-table04" style="margin-top: 5px;">
+								<td width="20%"></td>
+								<td width="40%">
+								<img id="xiaotu3" src="../../static/base/images/ico06.gif"  width="8" height="12" />
+								<a href="#" style="margin-left: 10px;" onclick = "openFormList('${month.mymonth}');">${month.mymonthname}</a>
+								</td>
+								<td width="40%"></td>
+							</tr>
+							</c:forEach>
+						</table>
+					</td>
+				</tr>
+				
+			</table>
+		</c:forEach>
+		</TD>
   		</tr>
   	  </table>
 </div>
--
-<div style="margin-left: 20px;">
+<div style="margin-left: 20px;margin-top: 610px;position:absolute;">
 <a href="http://www.baidu.com" >关于商丘师院</a>
 </div>
 <script type="text/javascript">
 /**
  * 根据月份打开关联的发票信息 列表
  */
-function openFormList(date){
+function openFormList(month){
 	$.ajax({
-		url : "/manage/form/lists",
+		url : "/manage/form/lists?date="+month,
 		success : function(data) {
 			$("#content").html(data);
 		}
 	});
+}
+
+function openMonth(obj){
+	var falt = $(obj).parents('.left-table03').next().is(':hidden');
+	$('.tableClass').hide();
+	$('.imageClass').attr('src','../../static/base/images/ico04.gif');
+	if(falt){
+		$("#"+obj.id+"title").attr('src','../../static/base/images/ico03.gif');
+		$(obj).parents('.left-table03').next().show();
+	}
+	
+	
 }
 </script>
 </body>

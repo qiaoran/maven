@@ -26,6 +26,12 @@ a.left-font01:hover {
 	text-decoration: none;
 	filter: DropShadow(Color=#FFFFFF, OffX=1, OffY=1);
 }
+.left-font03 {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #555555;
+	text-decoration: none;
+}
 /* 布局 */
 .main {
     /* font: bolder 20px '微软雅黑'; */
@@ -37,7 +43,7 @@ a.left-font01:hover {
 }
 .main .content {
     margin-left: 220px;
-    margin-right:20px;
+    margin-right:5px;
     height:600px;
    /*  border:1px solid #6795B4; */
 }
@@ -52,4 +58,20 @@ a.left-font01:hover {
 	border-top-style: solid;
 	border-top-color: #B8C9D6;
 	margin-left: 14px;
+}
+.left-table03 {
+	margin-top: 6px;
+	font-family: "宋体";
+	font-size: 12px;
+	color: #555555;
+	text-decoration: none;
+	background-image: url(../images/nav02.gif);
+}
+.left-table04 {
+	margin-top: 6px;
+	font-family: "宋体";
+	font-size: 12px;
+	color: #555555;
+	text-decoration: none;
+	background-image: none;
 }

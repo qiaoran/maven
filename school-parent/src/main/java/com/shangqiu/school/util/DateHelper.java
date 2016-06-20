@@ -1,10 +1,15 @@
 package com.shangqiu.school.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public final class DateHelper {
+	private static final Logger logger = LoggerFactory.getLogger(DateHelper.class);
 
 	private static final String FORMAT_TIMESTAMP = "yyyy-MM-dd HH:mm:ss.SSS";
 	private static final String order_TIMESTAMP = "yyyyMMddHHmmssSSS";
@@ -85,5 +90,44 @@ public final class DateHelper {
 		return (betweenDays/1000)+"";
 		//return new SimpleDateFormat(FORMAT_TIME).format(betweenDays);
 	}
+	
+	 /**
+     * 解析日期与时间
+     */
+    public static Date parseDatetime(String str) {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat(FORMAT_TIME).parse(str);
+        } catch (ParseException e) {
+            logger.error("解析日期字符串出错！格式：yyyy-MM-dd HH:mm:ss", e);
+        }
+        return date;
+    }
+
+    /**
+     * 解析日期
+     */
+    public static Date parseDate(String str) {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat(TENCENT_TIME).parse(str);
+        } catch (ParseException e) {
+            logger.error("解析日期字符串出错！格式：yyyy-MM-dd", e);
+        }
+        return date;
+    }
+
+    /**
+     * 解析时间(年)
+     */
+    public static Date parseTime(String str) {
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy").parse(str);
+        } catch (ParseException e) {
+            logger.error("解析日期字符串出错！格式：HH:mm:ss", e);
+        }
+        return date;
+    }
 
 }

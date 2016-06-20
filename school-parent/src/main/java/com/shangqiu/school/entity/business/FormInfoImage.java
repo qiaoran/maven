@@ -11,7 +11,7 @@ import com.shangqiu.school.entity.BaseEntity;
  *
  */
 @Entity
-@Table(name = "bs_form_info")
+@Table(name = "bs_form_info_image")
 public class FormInfoImage extends BaseEntity {
 	
 	/**

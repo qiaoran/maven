@@ -14,46 +14,57 @@
 		src="../../static/base/js/jquery.page.js"></script>
 	<link rel="stylesheet" href="../../static/base/css/page.css" />
 	<div class="mm_con">
-	
-	
-	
+
+
+
 		<table cellspacing="0" cellpadding="0" class="mm_table">
 			<tr>
-				<th width="40%">
-					<p class="p_name_title">名称</p>
+				<th width="20%">
+					编号
 				</th>
-				<th width="25%">编辑</th>
-				<th width="35%">操作</th>
+				<th width="20%">报销人</th>
+				<th width="15%">报销金额</th>
+				<th width="25%">报销时间</th>
+				<th width="20%">操作</th>
 			</tr>
-			<c:forEach var="showRoomCase" items="${page.result}">
+			<c:forEach var="formList" items="${result.result}">
 
-				<tr>
-					<td>
-						<p class="p_name">${showRoomCase.name}</p>
+				<tr  style="text-align: center;">
+					<td width="20%"  style="text-align: center;">
+						<p class="p_name">${formList.number}</p>
 					</td>
-					<td>
-						<p class="mm_type" name="${showRoomCase.pid}"
-							onclick="getshowRoomCase(${showRoomCase.pid})">户型</p>
+					<td width="20%"  style="text-align: center;">
+						<p class="p_name">${formList.rebursUser}</p>
 					</td>
-					<td><a href="javascript:;" class="mm_delete"
-						name="${showRoomCase.pid}"
-						onclick="deleteCase(${showRoomCase.pid});">删除</a></td>
+					<td width="15%"  style="text-align: center;">
+						<p class="p_name">${formList.money}</p>
+						</td>
+					<td width="25%"  style="text-align: center;">
+						<p class="p_name">${formList.formReimViem}</p>
+					</td>
+					<td width="20%"  style="text-align: center;"><a href="javascript:;" class="mm_delete"
+						onclick="opeanInfo(${formList.pid});">查看详情</a></td>
 				</tr>
 			</c:forEach>
 
 		</table>
 		<div class="page"></div>
 	</div>
-	<script type="text/javascript">
+<script type="text/javascript">
 $(".page").createPage({
-	pageCount : parseInt("${page.totalPages}"),
-	current : parseInt("${page.pageNo}"),
-	sum : parseInt("${page.totalCount}"),
+	pageCount : parseInt("${result.totalPages}"),
+	current : parseInt("${result.pageNo}"),
+	sum : parseInt("${result.totalCount}"),
 	backFn : function(p) { //单击回调方法，p是当前页码
-		url = "/roomcase/lists?token=${account.token}&page=" + p;
-		location.href = url;
+		openFormList("${pageDate}"+"&page=" + p);
+		/* url = "/manage/form/lists?date="+date+"&page=" + p;
+		location.href = url; */
 	}
 });
+
+function opeanInfo(formid){
+	
+}
 </script>
 </body>
 </html>
