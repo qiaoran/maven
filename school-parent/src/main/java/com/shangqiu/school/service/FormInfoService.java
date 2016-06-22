@@ -38,5 +38,25 @@ public interface FormInfoService {
 	 * @return
 	 */
 	public FormInfo getFormInfo(Long id);
+	
+	/**
+	 * 保存发票信息
+	 * @param formInfo
+	 * @return
+	 */
+	public FormInfo saveFormInfo(FormInfo formInfo);
+	
+	/**
+	 * 校验编号是否唯一
+	 * @param number
+	 * @return
+	 */
+	public boolean check(String number,String date,Long pid);
+	/**
+	 * 删除发票
+	 * @param id
+	 * @return
+	 */
+	public boolean delete(Long id);
 
 }

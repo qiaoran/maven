@@ -27,7 +27,7 @@
 				</tr>
 			</table></div>
 <div class="main">
-    <div class="content" id="content" style="background:#F6F6F6;">
+    <div class="content" id="content">
    <tr/>
      <div style="font: bolder 30px '方正舒体';top: 50px;left: 50px;">  欢迎来到商丘师范发票归档系统！</div>
     </div>
@@ -65,35 +65,12 @@
   		</tr>
   		<tr style="border:1px solid #6795B4;border-top-color: red" height="545px">
   		<td valign="top" style="text-align: center;">
-  		<!-- <label style="margin-left: -70px;">按年份列出</label> -->
-  		<c:forEach var="yearList" items="${yearLists}">
-			<table width="100%" border="0" cellpadding="0" cellspacing="0" >
-				<tr>
-					<td>
-						<table width="90%" border="0" align="center" cellpadding="0"cellspacing="0"  class="left-table03">
-							<tr height="29px;">
-								<td width="20%" align="right"><img id="${yearList.myyear}title" class="imageClass" name="img8" id="img8" src="../../static/base/images/ico04.gif"  height="11" /></td>
-								<td width="40%" onClick="openMonth(this);" id="${yearList.myyear}"><a href="javascript:" target="mainFrame"class="left-font03" >${yearList.myyearname}</a></td>
-								<td width="40%"></td>
-							</tr>
-						</table>
-						<table  width="100%" border="0" cellpadding="0" cellspacing="0" style="display:none;" class="tableClass">
-							<c:forEach var="month" items="${yearList.months}">
-							<tr height="20px;" class="left-table04" style="margin-top: 5px;">
-								<td width="20%"></td>
-								<td width="40%">
-								<img id="xiaotu3" src="../../static/base/images/ico06.gif"  width="8" height="12" />
-								<a href="#" style="margin-left: 10px;" onclick = "openFormList('${month.mymonth}');">${month.mymonthname}</a>
-								</td>
-								<td width="40%"></td>
-							</tr>
-							</c:forEach>
-						</table>
-					</td>
-				</tr>
-				
-			</table>
-		</c:forEach>
+  		<div style="text-align: inherit;" >
+  			<p class="add-font" onclick="opanadd();">发票数据录入</p>
+  		</div>
+  		<label style="margin-left: -70px;">年份快捷入口</label>
+  		<div id="yearMonths">
+		</div>
 		</TD>
   		</tr>
   	  </table>
@@ -102,12 +79,48 @@
 <a href="http://www.baidu.com" >关于商丘师院</a>
 </div>
 <script type="text/javascript">
+
+
+$(function(){
+	reCreateYear();
+})
+
+function reCreateYear(){
+	$.ajax({
+		url : "/manage/yearMonthList",
+		success : function(data) {
+			$("#yearMonths").html(data);
+		}
+	});
+}
+
 /**
  * 根据月份打开关联的发票信息 列表
  */
 function openFormList(month){
+	backurl1 = "/manage/form/lists?date="+month;
+	backData1 = "";
+	backurl = "/manage/form/lists?date="+month;
+	backData = "";
 	$.ajax({
 		url : "/manage/form/lists?date="+month,
+		success : function(data) {
+			$("#content").html(data);
+		}
+	});
+}
+
+var backurl ="";
+var backData = "";
+var backurl1 ="";
+var backData1 = "";
+function opanadd(){
+	backurl = backurl1;
+	backData = backData1;
+	backurl1 = "/manage/form/add";
+	backData1 = "";
+	$.ajax({
+		url : "/manage/form/add",
 		success : function(data) {
 			$("#content").html(data);
 		}
@@ -122,8 +135,70 @@ function openMonth(obj){
 		$("#"+obj.id+"title").attr('src','../../static/base/images/ico03.gif');
 		$(obj).parents('.left-table03').next().show();
 	}
+}
+
+function opeanInfo(formid){
+	backurl = backurl1;
+	backData = backData1;
+	backurl1 = "/manage/form/info";
+	backData1 = formid;
+	$.ajax({
+		url : "/manage/form/info",
+		data : {
+			"formId":formid
+		},
+		success : function(data) {
+			$("#content").html(data);
+		}
+	});
+}
+
+function updateInfo(formid){
+	backurl = backurl1;
+	backData = backData1;
+	backurl1 = "/manage/form/update";
+	backData1= formid;
+	$.ajax({
+			url : "/manage/form/update",
+			data : {
+				"formId":formid
+			},
+			success : function(data) {
+				$("#content").html(data);
+			}
+	});
+}
+function gobackFunct(){
+	if(""!=backData){
+		$.ajax({
+			url : backurl,
+			data : {
+				"formId":backData
+			},
+			success : function(data) {
+				$("#content").html(data);
+			}
+			});
+	}else{
+		if(""==backurl){
+			backurl = "/manage/form/lists";
+		}
+		$.ajax({
+			url : backurl,
+			success : function(data) {
+				$("#content").html(data);
+			}
+			});
+	}
+	var backur2 = backurl;
+	var backData2 = backData;
+	backurl = backurl1;
+	backData = backData1;
+	backurl1 = backur2;
+	backData1= backData2;
 	
-	
+	//window.history.go(-1);
+//	window.location.reload();
 }
 </script>
 </body>

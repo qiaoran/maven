@@ -71,6 +71,18 @@ public class FormInfo  extends BaseEntity {
 	 */
 	@Transient
 	private List<FormInfoImage> images ;
+	
+	@Transient
+	private String imagearrsy;
+	
+
+	public String getImagearrsy() {
+		return imagearrsy;
+	}
+
+	public void setImagearrsy(String imagearrsy) {
+		this.imagearrsy = imagearrsy;
+	}
 
 	public List<FormInfoImage> getImages() {
 		if(null==images){

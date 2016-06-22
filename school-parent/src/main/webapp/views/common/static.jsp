@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="../../static/base/css/plat.css" />
 <link href="../../static/base/css/manage.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../../static/base/js/login.js"></script>
+<script type="text/javascript" src="../../static/upload/imgUpload.js"></script>
 <script type="text/javascript">
 	var fserver = "${fsever}";
 </script>

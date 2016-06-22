@@ -38,7 +38,19 @@ public class MangeControl extends BaseController {
 	@RequestMapping("/home")
 	public ModelAndView home(HttpServletRequest request, HttpServletResponse response) {
 		Map<String,Object> dateLists = new HashMap<String, Object>();
-		dateLists.put("yearLists", this.formInfoService.getYearList());
+		//dateLists.put("yearLists", this.formInfoService.getYearList());
 		return new ModelAndView("/business/manage",dateLists);
+	}
+	/**
+	 * 获取年月快捷入口
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("/yearMonthList")
+	public ModelAndView yearMonthList(HttpServletRequest request, HttpServletResponse response) {
+		Map<String,Object> dateLists = new HashMap<String, Object>();
+		dateLists.put("yearLists", this.formInfoService.getYearList());
+		return new ModelAndView("/business/yearMonthList",dateLists);
 	}
 }

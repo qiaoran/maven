@@ -13,4 +13,9 @@ import com.shangqiu.school.util.dao.PageHibernateDao;
 @Repository
 public class FormInfoImageDao extends PageHibernateDao<FormInfoImage, Long> {
 
+	public void deleteImage(Long forimid){
+		String hql = "delete from FormInfoImage where formInfoId ="+forimid;
+		Object[] m={};
+		this.batchExecute(hql, m);
+	}
 }
