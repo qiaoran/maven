@@ -58,5 +58,18 @@ public interface FormInfoService {
 	 * @return
 	 */
 	public boolean delete(Long id);
+	/**
+	 * 根据number获取发票信息
+	 * @param number
+	 * @return
+	 */
+	public FormInfo getByNumber(String number,String date);
+	
+	/**
+	 * 保存form发票图片
+	 * @param imags
+	 * @param pid
+	 */
+	public void saveFormImage(String imags,Long pid);
 
 }

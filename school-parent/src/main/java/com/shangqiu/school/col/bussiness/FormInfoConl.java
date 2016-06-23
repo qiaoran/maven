@@ -114,12 +114,15 @@ public class FormInfoConl extends BaseController {
 	 * @param request
 	 * @param response
 	 * @param newDate
+	 * @param pid 如果为修改，那么不应该匹配这个被修改的pid
 	 * @return
 	 */
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String,Object> check(HttpServletRequest request, HttpServletResponse response,String newDate,String number,Long pid) {
 		Map<String,Object> map = new HashMap<String, Object>();
+		String[] datdss = newDate.split("-");
+		newDate = datdss[0]+"-"+datdss[1];
 		map.put("success", this.formInfoService.check(number,newDate,pid));
 		return map;
 	}

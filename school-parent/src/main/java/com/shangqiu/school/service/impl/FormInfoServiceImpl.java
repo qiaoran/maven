@@ -124,10 +124,10 @@ public class FormInfoServiceImpl implements FormInfoService {
 	}
 	
 	public boolean check(String number,String date,Long pid){
-		Date startDate = DateHelper.parseDatetime(date + " 00:00:00");
+		Date startDate = DateHelper.parseDatetime(date + "-01 00:00:00");
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(startDate);
-		calendar.add(Calendar.DATE, 1);
+		calendar.add(Calendar.MONTH, 1);
 		Date endDate = calendar.getTime();
 		List<FormInfo> list = this.formInfoDao.checkForm(number, startDate, endDate,pid);
 		if(list.size()>0){
@@ -142,6 +142,39 @@ public class FormInfoServiceImpl implements FormInfoService {
 			return true;
 		} catch (Exception e) {
 			return false;
+		}
+	}
+	/**
+	 * 根据number获取发票信息
+	 * @param number
+	 * @return
+	 */
+	public FormInfo getByNumber(String number,String date){
+		Date startDate = DateHelper.parseDatetime(date + "-01 00:00:00");
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(startDate);
+		calendar.add(Calendar.MONTH, 1);
+		Date endDate = calendar.getTime();
+		List<FormInfo> list = this.formInfoDao.checkForm(number, startDate, endDate,null);
+		if(list.size()>0){
+			return list.get(0);
+		}
+		return null;
+	}
+	
+	public void saveFormImage(String imaglist,Long pid){
+		String[] imags = null ;
+		if(null!=imaglist&&!"".equals(imaglist)){
+			imags = imaglist.split(",");
+		}
+		if(null!=imags){
+			FormInfoImage formInfoImage ;
+			for(int i=0;i<imags.length;i++){
+				formInfoImage = new FormInfoImage();
+				formInfoImage.setImageUrl(imags[i]);
+				formInfoImage.setFormInfoId(pid);
+				this.formInfoImageDao.save(formInfoImage);
+			}
 		}
 	}
 
