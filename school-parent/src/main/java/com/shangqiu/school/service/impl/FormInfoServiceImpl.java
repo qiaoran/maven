@@ -116,6 +116,7 @@ public class FormInfoServiceImpl implements FormInfoService {
 			for(int i=0;i<imags.length;i++){
 				formInfoImage = new FormInfoImage();
 				formInfoImage.setImageUrl(imags[i]);
+				formInfoImage.setCreateDate(new Date());
 				formInfoImage.setFormInfoId(formInfo.getPid());
 				this.formInfoImageDao.save(formInfoImage);
 			}
@@ -161,7 +162,7 @@ public class FormInfoServiceImpl implements FormInfoService {
 		}
 		return null;
 	}
-	
+	@Transactional(readOnly = false)
 	public void saveFormImage(String imaglist,Long pid){
 		String[] imags = null ;
 		if(null!=imaglist&&!"".equals(imaglist)){
@@ -173,6 +174,7 @@ public class FormInfoServiceImpl implements FormInfoService {
 				formInfoImage = new FormInfoImage();
 				formInfoImage.setImageUrl(imags[i]);
 				formInfoImage.setFormInfoId(pid);
+				formInfoImage.setCreateDate(new Date());
 				this.formInfoImageDao.save(formInfoImage);
 			}
 		}
