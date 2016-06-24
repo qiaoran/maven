@@ -14,7 +14,7 @@
 
 	<context:property-placeholder location="classpath:config.properties" />
 
-	<context:component-scan base-package="org.sh.project.conl" />
+	<context:component-scan base-package="org.bussiness" />
 
 	<bean id="validator"
 		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
@@ -53,7 +53,7 @@
 
 	
 	
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/roomcase/**"/>
 			<bean class="org.sh.project.conl.interceptors.LoginInterCeptor"/>
@@ -67,7 +67,7 @@
 			<bean class="org.sh.project.conl.interceptors.InterfaceCeptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+ -->
 
 	<mvc:annotation-driven validator="validator">
 		<mvc:message-converters>
@@ -75,7 +75,7 @@
 				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<constructor-arg index="0">
 					<util:constant
-						static-field="org.sh.common.utils.jackson.JacksonUtils.objectMapper" />
+						static-field="com.shangqiu.school.util.jackson.JacksonUtils.objectMapper" />
 				</constructor-arg>
 			</bean>
 		</mvc:message-converters>

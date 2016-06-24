@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.day</groupId>
@@ -23,6 +24,7 @@
 	</properties>
 
 	<dependencyManagement>
+		<!-- 设置统一版本格式 -->
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -95,6 +97,18 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.11</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -127,6 +141,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- orm框架 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -144,7 +159,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.36</version>
 		</dependency>
-
+		<!-- 数据库连接池 -->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
@@ -175,6 +190,12 @@
 			<version>2.5.3</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.1.15</version>
+		</dependency>
+
 		<!-- log4j2 -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -196,7 +217,7 @@
 			<artifactId>log4j-jcl</artifactId>
 			<version>2.3</version>
 		</dependency>
-
+		<!-- 页面布局 -->
 		<dependency>
 			<groupId>org.sitemesh</groupId>
 			<artifactId>sitemesh</artifactId>
@@ -236,11 +257,7 @@
 			<version>1.1.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.1.15</version>
-		</dependency>
+		<!-- httpcliect -->
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -253,11 +270,18 @@
 			<artifactId>commons-httpclient</artifactId>
 			<version>3.1</version>
 		</dependency>
-
+		<!-- java mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
+		</dependency>
+
+		<!-- result转map工具 -->
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer-osgi</artifactId>
+			<version>5.5.1</version>
 		</dependency>
 
 		<!-- MD5 H64等编码 -->
@@ -266,6 +290,33 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
+
+		<!-- org.apache.commons.io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+		
+		<!-- 谷歌生成二维码 -->
+		 <dependency>  
+            <groupId>com.google.zxing</groupId>  
+            <artifactId>core</artifactId>  
+            <version>3.0.0</version>
+        </dependency>
+        
+        <dependency>  
+            <groupId>com.google.zxing</groupId>  
+            <artifactId>javase</artifactId>  
+            <version>3.0.0</version>
+        </dependency>
+        
+        <!-- org.apache.commons.beanutils -->
+        <dependency>
+            <groupId>org.kuali.commons</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.8.3-kuali-4</version>
+        </dependency>
 
 		<!-- dubbo -->
 		<dependency>
@@ -279,13 +330,25 @@
 			</exclusions>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
+
 	</dependencies>
 	<modules>
 		<module>bussiness</module>
-		
-		
+
+
 		<module>service</module>
-    
-    <module>provider</module>
-  </modules>
+
+		<module>provider</module>
+		<module>common</module>
+	</modules>
 </project>
