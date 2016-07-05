@@ -28,11 +28,56 @@
 			<artifactId>service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.day</groupId>
-			<artifactId>common</artifactId>
+			<artifactId>util-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.day</groupId>
+			<artifactId>fasdfs-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.day</groupId>
+			<artifactId>redis-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>com.day</groupId> <artifactId>activeMQ-common</artifactId> 
+			<version>0.0.1-SNAPSHOT</version> </dependency> -->
+		<!-- <dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.13.3</version>
+			<scope>compile</scope>
+		</dependency> -->
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.7.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>5.7.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 	</dependencies>
 	<packaging>war</packaging>
 

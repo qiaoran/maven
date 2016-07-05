@@ -7,7 +7,7 @@
 
 	<dubbo:application name="dubbo_user"></dubbo:application>
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
-	<dubbo:registry address="zookeeper://127.0.0.1:2181:2181" check="false"></dubbo:registry>
+	<dubbo:registry address="zookeeper://127.0.0.1:2181" check="false"></dubbo:registry>
 	<!-- 要引用的服务 -->
 	<dubbo:reference id="userService" interface="org.service.service.UserService"></dubbo:reference>
 </beans>
