@@ -18,6 +18,7 @@ public class ProducerServiceImpl  {
 	            }   
 	        });   
 	    }    
+	    
 	  */
 	    public JmsTemplate getJmsTemplate() {   
 	        return jmsTemplate;   
