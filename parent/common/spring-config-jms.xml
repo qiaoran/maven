@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+	<!-- 连接池 -->
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="${activemq.broker.url}" />
+				<property name="useAsyncSend" value="true" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+	</bean>
+
+	<!--这个是队列目的地 -->
+	<!--这个是队列目的地，点对点的 -->
+	<bean id="baseQueue" class="org.apache.activemq.command.ActiveMQQueue"
+		abstract="true" />
+
+	<!-- 消息监听容器 -->
+	<bean id="queueContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer"
+		abstract="true">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<property name="concurrentConsumers" value="5" />
+		<property name="maxConcurrentConsumers" value="10" />
+		<property name="sessionAcknowledgeModeName" value="CLIENT_ACKNOWLEDGE" />
+	</bean>
+
+	<!-- 消息监听器 -->
+	<bean id="queueMessageListener" class="com.tgb.SpringActivemq.mq.base.ConsumerMessageListener"
+		abstract="true" />
+		
+		
+	<!-- <bean id="messageProducer"
+		class="com.lirenkj.smartedu.lx.modules.message.producer.MessageProducer"
+		abstract="true" /> -->
+		
+		
+		
+	<bean id="logQueue" parent="baseQueue">
+		<constructor-arg value="q.log" />
+	</bean>
+	
+	<bean id="logQueueContainer" parent="queueContainer">
+		<property name="destination" ref="logQueue" />
+		<property name="messageListener" ref="queueMessageListener" />
+	</bean>
+
+</beans>
