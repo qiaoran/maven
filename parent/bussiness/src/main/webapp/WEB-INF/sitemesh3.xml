@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+
+	<!-- 默认模板 -->
+	<mapping path="/*" decorator="/views/layout/default.jsp" />
+
+	
+
+</sitemesh>
+ 
