@@ -1,4 +1,4 @@
-package com.tgb.SpringActivemq.mq.base;
+package org.bussiness.mq.base;
 
 
 import java.util.concurrent.BlockingQueue;
@@ -14,10 +14,8 @@ import org.springframework.beans.factory.InitializingBean;
 
 
 /**
- * Create Date: 2014年8月22日 下午1:03:03
- * 
- * @version: V3.0.1
- * @author: Terry.Li
+ * @author joy-pc
+ *
  */
 public abstract class QueueMessageListener implements MessageListener, InitializingBean, DisposableBean {
 

@@ -14,7 +14,7 @@
 
 	<context:property-placeholder location="classpath:config.properties" />
 
-	<context:component-scan base-package="org.bussiness,com.tgb.SpringActivemq.mq.base" />
+	<context:component-scan base-package="org.bussiness" />
 	
 	<import resource="classpath:/META-INF/spring/dubbo-demo-consumer.xml"/> 
 	<import resource="classpath:spring-config-jms.xml"/>
